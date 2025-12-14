@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="canonical" href="https://silence.averylakeofficial.com">
+
+  <title>00 // THE SILENCE | The Digital Audit</title>
+  <meta name="description" content="Protocol 00: The Silence. The machine generates infinity. You generate the pause.">
+  <meta name="author" content="Avery Lake">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://silence.averylakeofficial.com">
+  <meta property="og:title" content="00 // THE SILENCE">
+  <meta property="og:description" content="Protocol 00. The machine generates infinity. You generate the pause.">
+  <meta property="og:image" content="https://silence.averylakeofficial.com/preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://silence.averylakeofficial.com/preview.jpg">
+  <meta property="og:url" content="https://silence.averylakeofficial.com/">
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23000000'/></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    /* ============================================== */
+    /* === UNIFIED DESIGN SYSTEM v2.0 === */
+    /* ============================================== */
+    :root {
+      --bg-void: #0a0a0a;
+      --bg-light: #f8f8f8;
+      --text-main: #ffffff;
+      --text-dim: rgba(255, 255, 255, 0.4);
+      --text-muted: rgba(255, 255, 255, 0.6);
+
+      /* Protocol 00: Cyan */
+      --accent-primary: #00ffff;
+      --accent-secondary: #ff00ff;
+
+      --glass-bg: rgba(10, 10, 10, 0.4);
+      --glass-border: rgba(255, 255, 255, 0.15);
+      --border-dim: rgba(255, 255, 255, 0.2);
+
+      --font-main: 'Space Grotesk', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-void);
+      font-family: var(--font-main);
+      color: var(--text-main);
+      overflow: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* === GATEKEEPER === */
+    #gatekeeper-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 99999;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    #gatekeeper-overlay h1 {
+      color: var(--accent-secondary);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    #gatekeeper-overlay p {
+      color: var(--text-dim);
+      font-size: 11px;
+      line-height: 1.6;
+    }
+
+    /* === START OVERLAY (UNIFIED) === */
+    #start-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--bg-void);
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: opacity 0.5s ease;
+    }
+
+    .start-title {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .start-by {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .start-artist {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      margin-bottom: 50px;
+    }
+
+    .btn-initialize {
+      background: transparent;
+      border: 1px solid var(--accent-primary);
+      color: var(--accent-primary);
+      font-family: var(--font-main);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 18px 50px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 30px;
+    }
+
+    .btn-initialize:hover {
+      background: rgba(0, 255, 255, 0.1);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    }
+
+    .sound-note {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    /* === MAIN LAYOUT === */
+    .main-container {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .main-container.active {
+      opacity: 1;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .protocol-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .protocol-subtitle {
+      font-size: 9px;
+      color: var(--text-dim);
+      letter-spacing: 2px;
+      margin-top: 4px;
+      text-transform: uppercase;
+    }
+
+    .audio-toggle {
+      font-family: var(--font-main);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 1px solid var(--border-dim);
+      background: transparent;
+      color: var(--text-dim);
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .audio-toggle:hover {
+      border-color: var(--text-muted);
+      color: var(--text-muted);
+    }
+
+    .audio-toggle.active {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    /* CENTER CONTENT */
+    .center-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .experience-prompt {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      text-align: center;
+      line-height: 1.6;
+      min-height: 40px;
+    }
+
+    .experience-prompt::after {
+      content: '|';
+      animation: blink 0.7s infinite;
+      color: var(--accent-primary);
+    }
+
+    .experience-prompt.done::after {
+      display: none;
+    }
+
+    @keyframes blink {
+
+      0%,
+      50% {
+        opacity: 1;
+      }
+
+      51%,
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* === THE MONOLITH === */
+    .monolith-frame {
+      width: 260px;
+      height: 462px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(4px);
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      touch-action: none;
+      user-select: none;
+      transition: all 0.2s ease-out;
+    }
+
+    .monolith-frame.active-state {
+      border-color: var(--accent-secondary);
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
+    }
+
+    .monolith-frame.silent-state {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.15);
+      background: #000;
+    }
+
+    #noise-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .monolith-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    #machine-text {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--accent-secondary);
+      text-transform: uppercase;
+      text-shadow: 0 0 10px var(--accent-secondary);
+      animation: blink 0.1s linear infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    /* BOTTOM BAR */
+    .bottom-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .reset-link {
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .reset-link:hover {
+      color: var(--text-main);
+    }
+
+    .footer-credit {
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+
+    .footer-credit:hover {
+      color: var(--text-main);
+    }
+
+    .music-credit {
+      font-size: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-continue {
+      font-family: var(--font-main);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: 1px solid var(--border-dim);
+      background: transparent;
+      color: var(--text-main);
+      padding: 12px 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+
+    .btn-continue:hover {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
+    }
+
+    /* === DATA CAPTURE OVERLAY === */
+    #capture-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 5000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #capture-overlay.active {
+      display: flex;
+    }
+
+    .capture-modal {
+      width: 320px;
+      text-align: center;
+    }
+
+    .capture-header {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
+    .capture-input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border-dim);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      font-size: 14px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 12px;
+      margin-bottom: 30px;
+      outline: none;
+    }
+
+    .capture-input::placeholder {
+      color: var(--text-dim);
+    }
+
+    .capture-input:focus {
+      border-color: var(--accent-primary);
+    }
+
+    /* UNIFIED BUTTONS */
+    .btn-primary {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--accent-primary);
+      color: var(--accent-primary);
+      font-family: var(--font-main);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      text-align: left;
+    }
+
+    .btn-primary:hover {
+      background: rgba(0, 255, 255, 0.1);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    }
+
+    .btn-secondary {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--border-dim);
+      color: var(--text-muted);
+      font-family: var(--font-main);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      text-align: left;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--text-main);
+      color: var(--text-main);
+    }
+
+    .btn-locked {
+      opacity: 0.4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .btn-locked.unlocked {
+      opacity: 1;
+      cursor: pointer;
+      pointer-events: auto;
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    .btn-locked.unlocked:hover {
+      background: rgba(0, 255, 255, 0.1);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    }
+
+    .btn-spacer {
+      height: 20px;
+    }
+
+    /* === ARTIFACT GENERATOR === */
+    #art-container {
+      position: fixed;
+      transform: translate(-9999px, -9999px);
+      width: 2250px;
+      height: 3000px;
+      /* Layered textured background matching song cover - HIGHLY VISIBLE */
+      background-color: #080808;
+      background-image:
+        /* Vignette (top layer) */
+        radial-gradient(circle, transparent 25%, #000 95%),
+        /* Cyan stripe - NARROW BUT VISIBLE */
+        linear-gradient(90deg, transparent 0%, transparent 39%, rgba(0, 255, 255, 0.5) 40%, rgba(0, 255, 255, 0.5) 42%, transparent 43%),
+        /* Magenta stripe - NARROW BUT VISIBLE */
+        linear-gradient(90deg, transparent 0%, transparent 59%, rgba(255, 0, 255, 0.5) 60%, rgba(255, 0, 255, 0.5) 62%, transparent 63%),
+        /* White static */
+        linear-gradient(90deg, transparent 0%, transparent 10%, rgba(255, 255, 255, 0.08) 10%, rgba(255, 255, 255, 0.08) 30%, transparent 30%),
+        /* Scanlines - HIGHLY VISIBLE */
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0px, transparent 1px, transparent 2px);
+      background-size:
+        100% 100%,
+        100% 100%,
+        100% 100%,
+        100% 70px,
+        100% 2px;
+      background-position:
+        0 0,
+        0 0,
+        0 0,
+        0 20px,
+        0 0;
+      padding: 150px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Textured background layers - real divs for html2canvas compatibility */
+    .art-noise-field {
+      position: absolute;
+      top: 150px;
+      left: 150px;
+      width: calc(100% - 300px);
+      height: calc(100% - 300px);
+      z-index: 1;
+      opacity: 0.3;
+      background-image:
+        linear-gradient(90deg, transparent 0%, transparent 40%, rgba(0, 255, 255, 0.7) 40%, rgba(0, 255, 255, 0.7) 45%, transparent 45%),
+        linear-gradient(90deg, transparent 0%, transparent 60%, rgba(255, 0, 255, 0.7) 60%, rgba(255, 0, 255, 0.7) 62%, transparent 62%),
+        linear-gradient(90deg, transparent 0%, transparent 10%, rgba(255, 255, 255, 0.1) 10%, rgba(255, 255, 255, 0.1) 30%, transparent 30%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, #000 3px);
+      background-size: 100% 120px, 100% 200px, 100% 70px, 100% 4px;
+      background-position: 0 0, 0 40px, 0 20px, 0 0;
+      filter: contrast(150%) brightness(120%);
+      pointer-events: none;
+    }
+
+    .art-dust-layer {
+      position: absolute;
+      top: 150px;
+      left: 150px;
+      width: calc(100% - 300px);
+      height: calc(100% - 300px);
+      z-index: 2;
+      opacity: 0.15;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      filter: contrast(200%);
+      pointer-events: none;
+    }
+
+    .art-vignette {
+      position: absolute;
+      top: 150px;
+      left: 150px;
+      width: calc(100% - 300px);
+      height: calc(100% - 300px);
+      background: radial-gradient(circle, transparent 25%, #000 95%);
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    .art-monolith {
+      width: 1400px;
+      aspect-ratio: 9 / 16;
+      background: #000;
+      border: 6px solid var(--accent-primary);
+      margin: 0 auto 100px auto;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Corner brackets */
+    .art-monolith::before,
+    .art-monolith::after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      border-style: solid;
+      border-width: 0;
+      pointer-events: none;
+    }
+
+    /* Top-left corner - Cyan */
+    .art-monolith::before {
+      top: -45px;
+      left: -45px;
+      border-left: 4px solid rgba(0, 255, 255, 0.8);
+      border-top: 4px solid rgba(0, 255, 255, 0.8);
+    }
+
+    /* Top-right corner - Magenta */
+    .art-monolith::after {
+      top: -45px;
+      right: -45px;
+      border-right: 4px solid rgba(255, 0, 255, 0.8);
+      border-top: 4px solid rgba(255, 0, 255, 0.8);
+    }
+
+    /* Bottom-left corner - Magenta */
+    .corner-bottom-left {
+      position: absolute;
+      bottom: -45px;
+      left: -45px;
+      width: 60px;
+      height: 60px;
+      border-left: 4px solid rgba(255, 0, 255, 0.8);
+      border-bottom: 4px solid rgba(255, 0, 255, 0.8);
+      pointer-events: none;
+    }
+
+    /* Bottom-right corner - Cyan */
+    .corner-bottom-right {
+      position: absolute;
+      bottom: -45px;
+      right: -45px;
+      width: 60px;
+      height: 60px;
+      border-right: 4px solid rgba(0, 255, 255, 0.8);
+      border-bottom: 4px solid rgba(0, 255, 255, 0.8);
+      pointer-events: none;
+    }
+
+    .art-footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      margin-top: auto;
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 10;
+    }
+
+    .art-footer>*:nth-child(1) {
+      text-align: left;
+    }
+
+    .art-footer>*:nth-child(2) {
+      text-align: center;
+    }
+
+    .art-footer>*:nth-child(3) {
+      text-align: right;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .main-container {
+        padding: 15px;
+      }
+
+      .monolith-frame {
+        width: 220px;
+        height: 391px;
+      }
+
+      .bottom-bar {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .footer-left {
+        align-items: center;
+        text-align: center;
+      }
+
+      .btn-continue {
+        width: 100%;
+        max-width: 260px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- GATEKEEPER -->
+  <div id="gatekeeper-overlay">
+    <h1>Restricted Terminal</h1>
+    <p>In-app browsers prevent full functionality.<br>Please open in Safari or Chrome.</p>
+  </div>
+
+  <!-- START OVERLAY -->
+  <div id="start-overlay">
+    <div class="start-title">THE SILENCE</div>
+    <div class="start-by">by</div>
+    <div class="start-artist">AVERY LAKE</div>
+    <button class="btn-initialize" onclick="initializeProtocol()">INITIALIZE</button>
+    <div class="sound-note">(Turn on sound for full effect)</div>
+  </div>
+
+  <audio id="bg-audio" loop src="Recursive Algorithm.mp3"></audio>
+
+  <!-- MAIN INTERFACE -->
+  <div class="main-container" id="main-interface">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div>
+        <div class="protocol-title">The Silence</div>
+        <div class="protocol-subtitle">Protocol 00</div>
+      </div>
+      <button class="audio-toggle" id="audio-toggle" onclick="toggleAudio()">AUDIO: OFF</button>
+    </div>
+
+    <!-- CENTER -->
+    <div class="center-content">
+      <div class="experience-prompt" id="typewriter-text"></div>
+
+      <div class="monolith-frame active-state" id="sensor-zone">
+        <canvas id="noise-canvas"></canvas>
+        <div class="monolith-overlay">
+          <span id="machine-text">>> NOISE DETECTED</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div class="bottom-bar">
+      <div class="footer-left">
+        <span class="reset-link" onclick="location.reload()">RESET PROTOCOL</span>
+        <a href="https://www.averylakeofficial.com/" class="footer-credit" target="_blank">AN ART OF AVERY LAKE
+          EXPERIMENT</a>
+        <span style="font-size: 8px; opacity: 0.5;">© 2026 Avery Lake. All rights reserved.</span>
+        <a href="https://averylakeofficial.com/the-signal" target="_blank" class="music-credit"
+          style="cursor: pointer;">Audio: Recursive Algorithm by AVERY LAKE</a>
+      </div>
+      <a id="main-continue-btn" href="javascript:void(0)" class="btn-secondary" onclick="checkContinue()"
+        style="width:auto; padding:12px 20px; opacity: 0.4;">CONTINUE THE AUDIT</a>
+    </div>
+
+    <!-- GATED MESSAGE -->
+    <div id="gate-message"
+      style="position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:rgba(0,255,255,0.1); border:1px solid var(--accent-primary); padding:15px 25px; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--accent-primary); display:none; text-align:center; z-index:100;">
+      YOU ARE THE ONE WHO STOPS THE NOISE.<br>HOLD THE SCREEN TO GENERATE SILENCE.</div>
+  </div>
+
+  <!-- DATA CAPTURE OVERLAY -->
+  <div id="capture-overlay">
+    <div class="capture-modal">
+      <div class="capture-header">DATA CAPTURED</div>
+
+      <input type="text" class="capture-input" id="subject-input" placeholder="ENTER SUBJECT NAME" maxlength="25">
+
+      <button class="btn-primary" onclick="downloadArtifact()">
+        <span style="opacity:0.5; margin-right:8px;">1.</span> DOWNLOAD ARTIFACT (IMAGE)
+      </button>
+      <button class="btn-secondary" onclick="downloadDataLog()">
+        <span style="opacity:0.5; margin-right:8px;">2.</span> DOWNLOAD DATA LOG
+      </button>
+      <button class="btn-secondary btn-locked" id="print-btn" onclick="requestPrint()" style="opacity:0.3;">
+        <span style="opacity:0.5; margin-right:8px;">3.</span> COMMISSION INQUIRY (optional)
+      </button>
+
+      <div style="height:10px;"></div>
+
+      <a href="https://digital.averylakeofficial.com/" class="btn-secondary">
+        <span style="opacity:0.5; margin-right:8px;">4.</span> CONTINUE THE AUDIT
+      </a>
+
+      <div style="margin-top:15px; text-align:center;">
+        <span class="reset-link" onclick="location.reload()"
+          style="font-size:9px; border-bottom:1px solid #333; padding-bottom:2px;">RESET PROTOCOL</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTIFACT GENERATOR (Hidden) -->
+  <div id="art-container">
+    <div style="height:100px;"></div>
+    <div class="art-monolith">
+      <span class="corner-bottom-left"></span>
+      <span class="corner-bottom-right"></span>
+    </div>
+    <div class="art-footer">
+      <div><span id="art-hash">0x000000</span> (1/1)</div>
+      <span>THE SILENCE</span>
+      <span>AVERY LAKE</span>
+    </div>
+  </div>
+
+  <script>
+    // === GATEKEEPER ===
+    (function () {
+      const ua = navigator.userAgent || '';
+      if (/Instagram|FBAN|FBAV|TikTok/i.test(ua)) {
+        document.getElementById('gatekeeper-overlay').style.display = 'flex';
+        throw new Error("Restricted Browser");
+      }
+    })();
+
+    // === STATE ===
+    let isGenerating = true;
+    let animId, startTime, isHolding = false;
+    let audioPlaying = false;
+    let capturedData = {};
+    let downloadedArtifact = false, downloadedLog = false;
+    let silenceCompleted = false;
+
+    const audio = document.getElementById('bg-audio');
+    const mainInterface = document.getElementById('main-interface');
+    const sensorZone = document.getElementById('sensor-zone');
+    const noiseCanvas = document.getElementById('noise-canvas');
+    const ctx = noiseCanvas.getContext('2d');
+    const audioToggle = document.getElementById('audio-toggle');
+
+    // === INITIALIZE ===
+    function initializeProtocol() {
+      document.getElementById('start-overlay').style.opacity = '0';
+      setTimeout(() => { document.getElementById('start-overlay').style.display = 'none'; }, 500);
+      mainInterface.classList.add('active');
+
+      audio.play().then(() => {
+        audioPlaying = true;
+        audioToggle.textContent = 'AUDIO: ON';
+        audioToggle.classList.add('active');
+      }).catch(() => { });
+
+      runMachine();
+      typewriterEffect();
+    }
+
+    // === TYPEWRITER EFFECT ===
+    function typewriterEffect() {
+      const text1 = "THE MACHINE HAS NO SILENCE TO GIVE.";
+      const text2 = "YOU ARE THE ONE WHO STOPS THE NOISE.";
+      const element = document.getElementById('typewriter-text');
+      let i = 0;
+      let currentText = text1;
+      let line = 1;
+
+      function type() {
+        if (i < currentText.length) {
+          element.innerHTML += currentText.charAt(i);
+          i++;
+          setTimeout(type, 40);
+        } else if (line === 1) {
+          element.innerHTML += '<br>';
+          currentText = text2;
+          i = 0;
+          line = 2;
+          setTimeout(type, 300);
+        } else {
+          element.classList.add('done');
+        }
+      }
+      type();
+    }
+
+    function toggleAudio() {
+      if (audioPlaying) {
+        audio.pause();
+        audioPlaying = false;
+        audioToggle.textContent = 'AUDIO: OFF';
+        audioToggle.classList.remove('active');
+      } else {
+        audio.play();
+        audioPlaying = true;
+        audioToggle.textContent = 'AUDIO: ON';
+        audioToggle.classList.add('active');
+      }
+    }
+
+    // === NOISE GENERATOR ===
+    function runMachine() {
+      if (!isGenerating) return;
+      resize();
+      for (let i = 0; i < 120; i++) {
+        const x = Math.random() * noiseCanvas.width;
+        const y = Math.random() * noiseCanvas.height;
+        const w = Math.random() * 40;
+        const seed = Math.random();
+        if (seed > 0.98) ctx.fillStyle = "#00ffff";
+        else if (seed > 0.96) ctx.fillStyle = "#ff00ff";
+        else ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.15})`;
+        ctx.fillRect(x, y, w, 2);
+      }
+      ctx.fillStyle = "rgba(10,10,10,0.2)";
+      ctx.fillRect(0, 0, noiseCanvas.width, noiseCanvas.height);
+      animId = requestAnimationFrame(runMachine);
+    }
+
+    function resize() {
+      noiseCanvas.width = sensorZone.offsetWidth;
+      noiseCanvas.height = sensorZone.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+
+    // === SILENCE INTERACTION ===
+    function startSilence(e) {
+      if (e.type === 'mousedown' && e.button !== 0) return;
+      if (e.cancelable) e.preventDefault();
+
+      isHolding = true;
+      audio.pause();
+      isGenerating = false;
+      cancelAnimationFrame(animId);
+
+      ctx.fillStyle = "#000";
+      ctx.fillRect(0, 0, noiseCanvas.width, noiseCanvas.height);
+
+      sensorZone.classList.remove('active-state');
+      sensorZone.classList.add('silent-state');
+      document.getElementById('machine-text').style.display = 'none';
+
+      startTime = Date.now();
+    }
+
+    function endSilence(e) {
+      if (!isHolding) return;
+      isHolding = false;
+
+      const duration = (Date.now() - startTime) / 1000;
+
+      if (duration < 0.1) {
+        // Too short, resume
+        if (audioPlaying) audio.play();
+        isGenerating = true;
+        runMachine();
+        sensorZone.classList.add('active-state');
+        sensorZone.classList.remove('silent-state');
+        document.getElementById('machine-text').style.display = 'block';
+        return;
+      }
+
+      // CAPTURE DATA
+      const now = new Date();
+      capturedData = {
+        duration: duration.toFixed(2),
+        timestamp: now.toISOString().replace('T', ' ').substring(0, 19),
+        hash: "0x" + Math.floor(Math.random() * 0xFFFFFFFFFF).toString(16).toUpperCase().padStart(10, '0'),
+        location: "LOCAL TERMINAL"
+      };
+
+      // Get location
+      fetch('https://get.geojs.io/v1/ip/geo.json')
+        .then(r => r.json())
+        .then(d => {
+          capturedData.location = (d.city ? d.city.toUpperCase() + ", " : "") + (d.country_code || "EARTH");
+        }).catch(() => { });
+
+      document.getElementById('art-hash').textContent = capturedData.hash;
+
+      // Resume and show capture
+      if (audioPlaying) audio.play();
+      isGenerating = true;
+      runMachine();
+      sensorZone.classList.add('active-state');
+      sensorZone.classList.remove('silent-state');
+      document.getElementById('machine-text').style.display = 'block';
+
+      document.getElementById('capture-overlay').classList.add('active');
+
+      // Mark silence as completed and update button
+      silenceCompleted = true;
+      const continueBtn = document.getElementById('main-continue-btn');
+      continueBtn.style.opacity = '1';
+      continueBtn.style.borderColor = 'var(--accent-primary)';
+      continueBtn.style.color = 'var(--accent-primary)';
+    }
+
+    sensorZone.addEventListener('mousedown', startSilence);
+    sensorZone.addEventListener('touchstart', startSilence, { passive: false });
+    sensorZone.addEventListener('mouseup', endSilence);
+    sensorZone.addEventListener('mouseleave', endSilence);
+    sensorZone.addEventListener('touchend', endSilence);
+    sensorZone.addEventListener('touchcancel', endSilence);
+
+    // === DOWNLOADS ===
+    function downloadArtifact() {
+      const el = document.getElementById('art-container');
+      html2canvas(el, { scale: 1, backgroundColor: "#0a0a0a" }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `SILENCE_ARTIFACT_${capturedData.hash}.png`;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        downloadedArtifact = true;
+        checkUnlock();
+      });
+    }
+
+    function downloadDataLog() {
+      const name = document.getElementById('subject-input').value.toUpperCase() || "ANONYMOUS";
+      const d = capturedData;
+
+      const log = `═══════════════════════════════════════════
+        DIGITAL AUDIT // PROTOCOL 00
+═══════════════════════════════════════════
+
+SUBJECT ID............... ${name}
+TIMESTAMP................ ${d.timestamp}
+LOCATION................. ${d.location}
+UNIQUE HASH.............. ${d.hash}
+
+─────────────────────────────────────────────
+PROTOCOL SPECIFIC DATA:
+─────────────────────────────────────────────
+DURATION................. ${d.duration}s
+METRIC................... BREATH / STILLNESS
+
+─────────────────────────────────────────────
+PHILOSOPHICAL NOTE
+─────────────────────────────────────────────
+The machine has no silence to give.
+You are the one who stops the noise.
+
+You held still for ${d.duration} seconds.
+
+In a world of infinite noise, to hold the silence is everything.
+Silence can be the origin of creativity.
+
+─────────────────────────────────────────────
+ARTIFACT STATUS:       VERIFIED
+─────────────────────────────────────────────
+
+AUDIO: "Recursive Algorithm" by AVERY LAKE
+© AVERY LAKE OFFICIAL // 2026
+THE DIGITAL AUDIT OF THE HUMAN CONDITION
+`;
+
+      const blob = new Blob([log], { type: 'text/plain' });
+      const link = document.createElement('a');
+      link.download = `SILENCE_DATA_LOG_${d.hash}.txt`;
+      link.href = URL.createObjectURL(blob);
+      link.click();
+      downloadedLog = true;
+      checkUnlock();
+    }
+
+    function checkUnlock() {
+      if (downloadedArtifact && downloadedLog) {
+        const btn = document.getElementById('print-btn');
+        btn.classList.add('unlocked');
+        // Visual Light Up
+        btn.style.opacity = '1';
+        btn.style.borderColor = 'var(--accent-primary)';
+        btn.style.color = 'var(--accent-primary)';
+        btn.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.3)';
+
+        // Mark protocol as completed in localStorage
+        try {
+          const progress = JSON.parse(localStorage.getItem('digitalAuditProgress') || '{}');
+          progress.silence = { completed: true, timestamp: Date.now() };
+          localStorage.setItem('digitalAuditProgress', JSON.stringify(progress));
+        } catch (e) { }
+      }
+    }
+
+    function requestPrint() {
+      if (!downloadedArtifact || !downloadedLog) return;
+
+      const name = document.getElementById('subject-input').value || "Anonymous";
+      const d = capturedData;
+
+      const subject = `Protocol 00 Commission Request (${name})`;
+      const body = `Dear Avery Lake,
+
+I have completed Protocol 00: The Silence and would like to request a signed and certified physical copy.
+
+PROTOCOL DATA:
+- Subject: ${name}
+- Duration: ${d.duration}s
+- Hash: ${d.hash}
+- Timestamp: ${d.timestamp}
+
+[IMPORTANT: I have attached BOTH the ARTIFACT IMAGE and the DATA LOG to this email.]
+
+Please advise on commission details.
+
+TECHNICAL SPECIFICATIONS:
+- Size: 18″ × 24″ (recommended). Other sizes available upon request.`;
+
+      window.location.href = `mailto:hello@averylakeofficial.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    // === GATED CONTINUE CHECK ===
+    function checkContinue() {
+      if (silenceCompleted) {
+        window.location.href = 'https://digital.averylakeofficial.com/';
+      } else {
+        const msg = document.getElementById('gate-message');
+        msg.style.display = 'block';
+        setTimeout(() => { msg.style.display = 'none'; }, 3000);
+      }
+    }
+  </script>
+</body>
+
+</html>
